@@ -1,0 +1,1 @@
+this project contains jenkins job dsl examples written in Groovy
