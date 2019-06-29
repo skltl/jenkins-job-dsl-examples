@@ -2,7 +2,7 @@ package jobs.chaining
 
 
 
-1..4.each {it ->
+(1..4).each {it ->
     job("example3-chaining/job$it") {// here we use interpolation
         description("job$it")
         steps {
