@@ -9,5 +9,6 @@ job("example2_building_gradle_project/download-and-build-gradle-project"){
     }
     steps {
         gradle('clean build')
+        shell('cowsay "mooo!"')
     }
 }
