@@ -1,0 +1,9 @@
+// enable DSL support in IDEA, see https://confluence.jetbrains.com/display/GRVY/Scripting+IDE+for+DSL+awareness
+
+// here we expect that all groovy jobs will be in folder /jobs
+def jobPath = /.*\/jobs\/.*\.groovy///
+
+def ctx = context(pathRegexp: jobPath)
+contributor(ctx, {
+    delegatesTo(findClass('javaposse.jobdsl.dsl.DslFactory'))
+})
