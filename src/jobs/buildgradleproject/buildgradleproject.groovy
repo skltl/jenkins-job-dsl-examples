@@ -7,4 +7,7 @@ job("example2_building_gradle_project/download-and-build-gradle-project"){
     scm {
         git('https://github.com/skltl/helloWorld.git', {node -> node / 'extensions' << '' })
     }
+    steps {
+        gradle('clean build'){node -> node/ 'makeExecutable' << 'true'}
+    }
 }
