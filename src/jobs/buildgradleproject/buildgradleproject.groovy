@@ -1,7 +1,7 @@
 package jobs.buildgradleproject
 
 
-job("download-and-build-gradle-project"){
+job("example2_building_gradle_project/download-and-build-gradle-project"){
 
     description("download and build gradle projject")
     scm {
