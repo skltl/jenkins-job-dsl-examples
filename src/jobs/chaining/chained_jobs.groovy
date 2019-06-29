@@ -9,7 +9,7 @@ package jobs.chaining
             shell("echo \"job $it\"")
         }
         publishers {
-            downstream('job' + getIncremented(it), 'SUCCESS')// either SUCCESS, UNSTABLE OR FAILURE
+            downstream("example3-chaining/job${it + 1}", 'SUCCESS')// either SUCCESS, UNSTABLE OR FAILURE
         }
 
     }
@@ -24,8 +24,3 @@ job("example3-chaining/job5") {
 }
 
 queue('example3-chaining/job1')// start building first job!
-
-
-def getIncremented(i){
-    return i + 1
-}
