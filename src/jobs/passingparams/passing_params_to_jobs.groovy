@@ -1,4 +1,4 @@
-
+import hudson.model.*
 
 def mockBranchNames = ['example-1', 'example-2', 'example-3']
 
@@ -10,7 +10,7 @@ mockBranchNames.each {branch ->
 
 def createBuildJob(dslFactory, branchName){
 
-    dslFactory.job("example5-passing_params/$branchName-build") {// here we use interpolation
+    dslFactory.job("example5-passing_params/$branchName-build") {
         description("$branchName")
         triggers {
             cron('*/5 * * * *')
@@ -27,16 +27,13 @@ def createBuildJob(dslFactory, branchName){
                 }
             }
         }
-
-
-
     }
 }
 
 
 def createAcceptanceTestJob(dslFactory, branchName){
 
-    dslFactory.job("example5-passing_params/$branchName-test") {// here we use interpolation
+    dslFactory.job("example5-passing_params/$branchName-test") {
         description("$branchName")
         parameters {
             booleanParam('RUN_TESTS', true, 'uncheck to disable tests')
@@ -44,15 +41,19 @@ def createAcceptanceTestJob(dslFactory, branchName){
         steps {
             shell("echo \"should I run mock acceptance test for $branchName\"? ${getRunTestsValue()}")
         }
-
     }
 }
 
 
 def getRunTestsValue(){
-    binding.variables.each {
-        if(it.key.equals("RUN_TESTS")){
-            return Boolean.valueOf(it.value)
+    // here we use jenkins library jenkins-core-2.85.jar
+    // source: https://stackoverflow.com/questions/31394647/how-to-access-list-of-jenkins-job-parameters-from-within-a-jobdsl-script
+    Build build = Executor.currentExecutor().currentExecutable
+    ParametersAction parametersAction = build.getAction(ParametersAction)
+    parametersAction.parameters.each {paramValue ->
+
+        if(paramValue.name.equals('RUN_TESTS')){
+            return paramValue.value
         }
     }
 }
