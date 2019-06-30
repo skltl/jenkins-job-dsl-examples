@@ -20,7 +20,7 @@ def createBuildJob(dslFactory, branchName){
 
             downstreamParameterized {
 
-                trigger('example5-passing_params/$branchName-test') {
+                trigger("example5-passing_params/$branchName-test") {
                     parameters {
                         booleanParam('RUN_TESTS', true)
                     }
