@@ -1,6 +1,6 @@
 
 
-def mockBranchNames = ['feature/example-1', 'feature/example-2', 'feature/example-3']
+def mockBranchNames = ['example-1', 'example-2', 'example-3']
 
 mockBranchNames.each {branch ->
     createBuildJob(this, branch)
