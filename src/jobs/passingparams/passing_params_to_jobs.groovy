@@ -39,7 +39,8 @@ def createAcceptanceTestJob(dslFactory, branchName){
             booleanParam('RUN_TESTS', true, 'uncheck to disable tests')
         }
         steps {
-            shell("echo \"should I run mock acceptance test for $branchName\"? ${RUN_TESTS}")// like accessing env variables
+            // like accessing env variables
+            shell("echo \"should I run mock acceptance test for $branchName\"? " + '${RUN_TESTS}')// using apostrophes to avoid interpolation!
         }
     }
 }
