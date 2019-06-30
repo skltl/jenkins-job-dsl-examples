@@ -1,4 +1,4 @@
-import hudson.model.*
+
 
 def mockBranchNames = ['example-1', 'example-2', 'example-3']
 
@@ -39,21 +39,8 @@ def createAcceptanceTestJob(dslFactory, branchName){
             booleanParam('RUN_TESTS', true, 'uncheck to disable tests')
         }
         steps {
-            shell("echo \"should I run mock acceptance test for $branchName\"? ${getRunTestsValue()}")
+            shell("echo \"should I run mock acceptance test for $branchName\"? ${RUN_TESTS}")// like accessing env variables
         }
     }
 }
 
-
-def getRunTestsValue(){
-    // here we use jenkins library jenkins-core-2.85.jar
-    // source: https://stackoverflow.com/questions/31394647/how-to-access-list-of-jenkins-job-parameters-from-within-a-jobdsl-script
-    Build build = Executor.currentExecutor().currentExecutable
-    ParametersAction parametersAction = build.getAction(ParametersAction)
-    parametersAction.parameters.each {paramValue ->
-
-        if(paramValue.name.equals('RUN_TESTS')){
-            return paramValue.value
-        }
-    }
-}
