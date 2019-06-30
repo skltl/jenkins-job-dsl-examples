@@ -2,19 +2,23 @@ package jobs.chaining
 
 
 
-(1..4).each {it ->
-    job("example3-chaining/job$it") {// here we use interpolation
-        description("job$it")
+(1..4).each{jobNumber ->
+
+
+    println "building job $jobNumber..."
+    job("example3-chaining/job$jobNumber") {// here we use interpolation
+        description("job$jobNumber")
         steps {
-            shell("echo \"job $it\"")
+            shell("echo \"job $jobNumber\"")
         }
         publishers {
-            downstream("example3-chaining/job${it + 1}", 'SUCCESS')// either SUCCESS, UNSTABLE OR FAILURE
+            downstream("example3-chaining/job${jobNumber + 1}", 'SUCCESS')// either SUCCESS, UNSTABLE OR FAILURE
         }
 
     }
 }
 
+// the last job won't downstream anything
 job("example3-chaining/job5") {
     description("job5")
     steps {
