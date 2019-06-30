@@ -10,7 +10,7 @@ def lastJob = 5
 }
 
 
-queue('example3-chaining/job1')// start building first job!
+queue('example4-programmatically/job1')
 
 def createJob(dslFactory, jobNumber, isLastJob){
 
