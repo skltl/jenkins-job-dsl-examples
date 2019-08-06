@@ -1,5 +1,3 @@
-
-
 def mockBranchNames = ['example-1', 'example-2', 'example-3']
 
 mockBranchNames.each {branch ->
@@ -10,7 +8,7 @@ mockBranchNames.each {branch ->
 
 def createBuildJob(dslFactory, branchName){
 
-    dslFactory.job("example5-passing_params/$branchName-build") {
+    dslFactory.job("example5_passingparams/$branchName-build") {
         description("$branchName")
         triggers {
             cron('*/5 * * * *')
@@ -20,7 +18,7 @@ def createBuildJob(dslFactory, branchName){
 
             downstreamParameterized {
 
-                trigger("example5-passing_params/$branchName-test") {
+                trigger("example5_passingparams/$branchName-test") {
                     parameters {
                         booleanParam('RUN_TESTS', true)
                     }
@@ -33,7 +31,7 @@ def createBuildJob(dslFactory, branchName){
 
 def createAcceptanceTestJob(dslFactory, branchName){
 
-    dslFactory.job("example5-passing_params/$branchName-test") {
+    dslFactory.job("example5_passingparams/$branchName-test") {
         description("$branchName")
         parameters {
             booleanParam('RUN_TESTS', true, 'uncheck to disable tests')
