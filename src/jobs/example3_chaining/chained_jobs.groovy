@@ -23,4 +23,4 @@ job("example3_chaining/job5") {
 
 }
 
-queue('example3-chaining/job1')// start building first job!
+queue('example3_chaining/job1')// start building first job!
