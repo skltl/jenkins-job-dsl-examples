@@ -1,6 +1,6 @@
 This project contains jenkins job dsl examples written in Groovy
 
-In order to enable dsl script autocompletion in Intellij, add job-ds-core-1.74.jar to libraries list. (Didn't check with other IDEs)
+Thanks to Gradle, the autocompletion in Intellij should work out of the box in folder src/jobs :)
 
 In order to try out your script and see the xml config that would be created on Jenkins, execute:
 java -jar job-dsl-core-1.74-standalone.jar INSERT-SCRIPT-NAME.groovy
