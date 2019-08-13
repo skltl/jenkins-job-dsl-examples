@@ -1,5 +1,7 @@
 def lastJob = 5
 
+folder('example4_programmatically')
+
 (1..5).each {jobNumber ->
     createJob(this, jobNumber, jobNumber == lastJob) // "this" <=> dsl factory!
 

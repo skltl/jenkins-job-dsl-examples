@@ -1,3 +1,5 @@
+folder('example2_buildgradle')
+
 job("example2_buildgradle/download-and-build-gradle-project"){
 
     description("download and build gradle project")

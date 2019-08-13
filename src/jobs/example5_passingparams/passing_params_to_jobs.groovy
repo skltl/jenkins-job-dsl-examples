@@ -1,5 +1,7 @@
 def mockBranchNames = ['example-1', 'example-2', 'example-3']
 
+folder('example5_passingparams')
+
 mockBranchNames.each {branch ->
     createBuildJob(this, branch)
     createAcceptanceTestJob(this, branch)

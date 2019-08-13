@@ -1,3 +1,5 @@
+folder('example3_chaining')
+
 (1..4).each{jobNumber ->
 
 
