@@ -12,7 +12,7 @@ class JobScriptsSpec extends Specification {
     JenkinsRule jenkinsRule = new JenkinsRule()
 
     @Unroll
-    def "test script "(File file) {
+    def "test script #file.name"(File file) {
         given:
         def jobManagement = new JenkinsJobManagement(System.out, [:], new File('.'))
 
